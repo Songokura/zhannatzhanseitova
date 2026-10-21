@@ -194,9 +194,10 @@ body.menu-open { overflow: hidden; }
 .hero-bg .bg-bloom { right: auto; left: 30%; top: 55%; transform: translate(-50%, -50%); width: min(80vmin, 680px); height: min(80vmin, 680px); opacity: .12; }
 /* арка под фото: повторяет арку на снимке клиента */
 .hero-frame {
-  position: absolute; z-index: 1; top: calc(var(--hdr) + 14px); bottom: 74px; right: var(--pad);
-  /* узкая арка под вертикальный кадр: вся группа в кадре, головы ниже скругления */
-  width: auto; aspect-ratio: 5 / 8; max-width: 44%;
+  /* арка - вторая колонка сетки героя; текст и арка стоят группой по центру с постоянным зазором,
+     без пустой середины на любой ширине. Узкая 5:8 под вертикальный кадр - вся группа в кадре */
+  position: relative; z-index: 1; height: calc(100svh - var(--hdr) - 100px);
+  width: auto; aspect-ratio: 5 / 8; max-width: 100%;
   border-radius: 999px 999px var(--r-card) var(--r-card); overflow: hidden; background: var(--blue-l);
   box-shadow: 0 40px 80px -40px rgba(37, 54, 74, .35);
 }
@@ -204,13 +205,13 @@ body.menu-open { overflow: hidden; }
 .hero-ph img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%; }
 .hero-grad { display: none; }
 #bl-line-hero { z-index: 2; opacity: calc(1 - var(--intro, 0)); }
-.hero-in { position: relative; z-index: 2; width: min(1360px, 100% - 2 * var(--pad)); margin: 0 auto; padding: calc(var(--hdr) + 20px) 0 96px; flex: 1; display: flex; align-items: center; }
-.hero-txt { width: 52%; max-width: 680px; }
+.hero-in { position: relative; z-index: 2; width: min(1360px, 100% - 2 * var(--pad)); margin: 0 auto; padding: calc(var(--hdr) + 14px) 0 74px; flex: 1; display: grid; grid-template-columns: minmax(0, 680px) auto; justify-content: center; gap: clamp(32px, 5vw, 96px); align-items: center; }
+.hero-txt { position: relative; z-index: 2; max-width: 680px; }
 .hero-txt > * { opacity: calc(var(--intro, 0)); transform: translateY(calc(26px * (1 - var(--intro, 0)))); }
 .hero-sub { margin-top: 18px; font-size: clamp(24px, 2.2vw, 32px); font-style: italic; line-height: 1.25; color: var(--ink2); }
 .hero-card {
   margin-top: 34px; padding: clamp(20px, 2.4vw, 30px); border-radius: var(--r-card); background: rgba(251, 249, 245, .82);
-  border: 1px solid rgba(37, 54, 74, .08); box-shadow: 0 24px 50px -30px rgba(37, 54, 74, .3); max-width: 600px;
+  border: 1px solid rgba(37, 54, 74, .08); box-shadow: 0 24px 50px -30px rgba(37, 54, 74, .3);
 }
 .hero-card .lead { margin-top: 14px; color: var(--ink); }
 .hero-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 24px; }
@@ -389,7 +390,6 @@ body.menu-open .sticky { display: none; }
 /* ---------- Адаптив ---------- */
 @media (max-width: 1120px) {
   .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero-txt { width: 56%; }
 }
 @media (max-width: 900px) {
   .pw, .pw-hero { height: auto; }
@@ -397,14 +397,14 @@ body.menu-open .sticky { display: none; }
   .plate::after { display: none; }
   /* мобильный герой по макету клиента: фото во весь экран, заголовок сверху, карточка снизу */
   .hero { min-height: 100svh; }
-  .hero-frame { inset: 0; width: auto; max-width: none; aspect-ratio: auto; border-radius: 0; box-shadow: none; }
+  .hero-frame { position: absolute; inset: 0; justify-self: stretch; width: auto; height: auto; max-width: none; aspect-ratio: auto; border-radius: 0; box-shadow: none; }
   .hero-ph img { object-position: 50% 36%; }
   .hero-grad {
     display: block; position: absolute; inset: 0; z-index: 1;
     /* подложка только под заголовком (в px), лица группы ниже неё не бледнеют */
     background: linear-gradient(180deg, rgba(243, 239, 232, .95) 0, rgba(243, 239, 232, .85) 150px, rgba(243, 239, 232, 0) 235px, rgba(243, 239, 232, 0) 62%, rgba(243, 239, 232, .5) 100%);
   }
-  .hero-in { padding: calc(var(--hdr) + 12px) 0 60px; align-items: stretch; }
+  .hero-in { position: static; display: flex; padding: calc(var(--hdr) + 12px) 0 60px; align-items: stretch; }
   .hero-txt { width: 100%; max-width: none; display: flex; flex-direction: column; }
   .hero-txt h1 { font-size: clamp(46px, 13.4vw, 64px); }
   .hero-sub { margin-top: 10px; font-size: clamp(21px, 5.8vw, 26px); }
