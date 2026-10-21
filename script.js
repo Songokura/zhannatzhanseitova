@@ -18,10 +18,12 @@
   var HI = "Здравствуйте, Жаннат! Пишу с сайта. ";
   var WA = { ru: {
     "default": HI + "Хочу узнать подробнее о консультации.",
-    hero: HI + "Хочу записаться на консультацию.",
+    hero: HI + "Хочу в круг «Пространство радости».",
     menu: HI + "Хочу узнать подробнее.",
     konsultaciya: HI + "Хочу записаться на индивидуальную консультацию.",
-    klub: HI + "Хочу узнать о ближайших встречах клуба «Пространство радости».",
+    klub: HI + "Хочу в круг. Расскажите о ближайшей встрече.",
+    "ob-avtore": HI + "Хочу в круг «Пространство радости».",
+    otzyvy: HI + "Хочу почитать отзывы участниц круга.",
     praktiki: HI + "Интересуют практики и медитации. Подскажите, с чего начать.",
     programmy: HI + "Интересует программа:",
     kontakty: HI + "Хочу узнать подробнее о консультации.",
@@ -193,28 +195,15 @@
     if (!heroBloom || !hero) return;
     var r = heroPh.getBoundingClientRect(), w = r.width, h = r.height;
     if (!w || !h) return;
-    var cx, cy, r0, mob = MOB();
-    if (mob) {
-      r0 = Math.min(0.36 * w, 150);
-      cx = w / 2; cy = HDR() + 14 + r0;
-      var d = Math.round(2 * r0);
-      if (heroCache.d !== d) { heroCache.d = d; hero.style.setProperty("--bloom-d", d + "px"); }
-    } else {
-      r0 = Math.min(0.19 * w, 0.33 * h);
-      cx = 0.73 * w; cy = 0.5 * h;
-    }
+    /* пион раскрывается на интро до полного кадра: фото героя видно целиком */
+    var mob = MOB();
+    var cx = 0.5 * w, cy = (mob ? 0.42 : 0.46) * h;
     var rmax = Math.max(Math.hypot(cx, cy), Math.hypot(w - cx, cy), Math.hypot(cx, h - cy), Math.hypot(w - cx, h - cy)) * 1.05;
-    var s0 = r0 / 100, sFull = rmax / COVER_R;
+    var sFull = rmax / COVER_R;
     var ip = easeOut(intro);
-    var s, a;
-    if (mob) { s = s0 * ip; a = -60 * (1 - ip); }
-    else {
-      var sp = smooth(stay);
-      s = s0 * ip + (sFull - s0) * Math.pow(sp, 1.7);
-      a = -60 * (1 - ip) + 14 * sp;
-    }
+    var s = sFull * Math.pow(ip, 1.6), a = -60 * (1 - ip);
     heroBloom.set(cx, cy, s, a);
-    var clipOn = mob || stay < 0.995;
+    var clipOn = ip < 0.995;
     if (heroCache.clipOn !== clipOn) { heroCache.clipOn = clipOn; heroPh.style.clipPath = clipOn ? "url(#bl-hero)" : "none"; }
   }
   function update() {
@@ -300,7 +289,7 @@
   altEls.forEach(function (el) { RU[el.getAttribute("data-i-alt")] = el.getAttribute("alt"); });
   RU["meta.title"] = doc.title;
   RU["meta.desc"] = metaDesc ? metaDesc.getAttribute("content") : "";
-  var FORM_L = { ru: { head: "Заявка с сайта. Хочу начать с:", name: "Имя", phone: "Телефон", msg: "Что волнует", opt: { k: "Консультация", c: "Женский клуб", p: "Практики и медитации" } } };
+  var FORM_L = { ru: { head: "Заявка с сайта. Хочу начать с:", name: "Имя", phone: "Телефон", msg: "Что волнует", opt: { k: "Консультация", c: "Женский круг", p: "Практики и медитации" } } };
   function t(key) { var d = I18N[LANG] || RU; return d[key] != null ? d[key] : RU[key]; }
   function applyLang(lang) {
     if (!I18N[lang]) lang = "ru";
@@ -370,7 +359,7 @@
       if (badName || badPhone) { if (ferr) ferr.hidden = false; (badName ? f.name : f.phone).focus(); return; }
       if (ferr) ferr.hidden = true;
       var L = FORM_L[LANG] || FORM_L.ru;
-      var opt = (form.querySelector('input[name="start"]:checked') || {}).value || "k";
+      var opt = (form.querySelector('input[name="start"]:checked') || {}).value || "c";
       var lines = [L.head + " " + (L.opt[opt] || ""), L.name + ": " + name, L.phone + ": " + phone];
       if (f.message.value.trim()) lines.push(L.msg + ": " + f.message.value.trim());
       var url = "https://wa.me/" + WA_NUM + "?text=" + encodeURIComponent(lines.join("\n"));
