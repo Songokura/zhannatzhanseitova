@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Mulish:wght@400;500;600;700&display=swap">
 <link rel="preload" as="image" href="assets/img/hero.webp">
-<link rel="stylesheet" href="styles.css?v=20261021-4">
+<link rel="stylesheet" href="styles.css?v=20261021-5">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -62,6 +62,11 @@
   <symbol id="ic-arr" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 12h15M13 6l6 6-6 6"/></symbol>
   <symbol id="ic-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></symbol>
   <symbol id="ic-chk" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="ic-body" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.2"/><path d="M5 9.5c2.5 1 4.5 1.3 7 1.3s4.5-.3 7-1.3M12 10.8v4.4M8.5 21l3.5-5.8 3.5 5.8"/></g></symbol>
+  <symbol id="ic-mind" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></g></symbol>
+  <symbol id="ic-rod" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V9M12 13l-4-3M12 11l4-3"/><circle cx="12" cy="6" r="3"/><circle cx="7" cy="9" r="2"/><circle cx="17" cy="7" r="2"/></g></symbol>
+  <symbol id="ic-money" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M12 7.5 13.6 10.4 16.5 12 13.6 13.6 12 16.5 10.4 13.6 7.5 12 10.4 10.4Z"/></g></symbol>
+  <symbol id="ic-heart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/></g></symbol>
   <symbol id="ic-petal" viewBox="-60 -110 120 120"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M0 0C26-18 44-62 0-100C-44-62-26-18 0 0Z"/></symbol>
 </svg>
 <svg class="bl-defs" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -70,7 +75,6 @@
     <clipPath id="bl-1" clipPathUnits="userSpaceOnUse"></clipPath>
     <clipPath id="bl-2" clipPathUnits="userSpaceOnUse"></clipPath>
     <clipPath id="bl-3" clipPathUnits="userSpaceOnUse"></clipPath>
-    <clipPath id="bl-a" clipPathUnits="userSpaceOnUse"></clipPath>
   </defs>
 </svg>
 
@@ -84,7 +88,7 @@
       <a href="#klub" data-i="nav.2">Круг</a>
       <a href="#konsultaciya" data-i="nav.1">Консультация</a>
       <a href="#praktiki" data-i="nav.3">Практики</a>
-      <a href="#programmy" data-i="nav.4">Программы</a>
+      <a href="#programmy" data-i="nav.4">Форматы</a>
       <a href="#ob-avtore" data-i="nav.5">Обо мне</a>
       <a href="#voprosy" data-i="nav.6">Вопросы</a>
     </nav>
@@ -103,7 +107,7 @@
       <a href="#klub" data-i="nav.2">Круг</a>
       <a href="#konsultaciya" data-i="nav.1">Консультация</a>
       <a href="#praktiki" data-i="nav.3">Практики</a>
-      <a href="#programmy" data-i="nav.4">Программы</a>
+      <a href="#programmy" data-i="nav.4">Форматы</a>
       <a href="#ob-avtore" data-i="nav.5">Обо мне</a>
       <a href="#voprosy" data-i="nav.6">Вопросы</a>
       <a href="#kontakty" data-i="nav.7">Контакты</a>
@@ -154,27 +158,84 @@
   </section>
 </div>
 
-<!-- Знакомо? -->
-<section class="sec sec-tint sec-znakomo" id="znakomo" aria-labelledby="h-zn">
+<!-- Знакомо? (по макету клиентки 21.10.2026) -->
+<section class="sec sec-light sec-znakomo" id="znakomo" aria-labelledby="h-zn">
   <div class="wrap">
+    <p class="kicker" data-i="zn.k">Пространство для вас</p>
+    <h2 id="h-zn"><span data-i="zn.h">Иногда женщина говорит это</span> <em data-i="zn.h2">вслух впервые</em></h2>
     <div class="zn-grid">
-      <figure class="zn-ph rv" aria-hidden="true">
-        <img src="assets/img/peony.webp" alt="" loading="lazy" decoding="async" width="800" height="1205">
+      <figure class="zn-ph rv">
+        <img src="assets/img/krug.webp" alt="Женщины в светлых льняных платьях сидят кругом, одна говорит, прижав руки к груди" data-i-alt="alt.zn" loading="lazy" decoding="async" width="1200" height="800">
       </figure>
-      <div class="zn-txt">
-        <p class="kicker" data-i="zn.k">Знакомо?</p>
-        <h2 id="h-zn" data-i="zn.h">Иногда женщина говорит это вслух впервые</h2>
-        <ul class="chips rv" aria-label="С чем приходят">
-          <li data-i="zn.c1">«Я потеряла себя»</li>
-          <li data-i="zn.c2">«Живу в тревоге»</li>
-          <li data-i="zn.c3">«Устала быть сильной»</li>
-          <li data-i="zn.c4">«Меня никто не ценит»</li>
-          <li data-i="zn.c5">«Как полюбить себя?»</li>
-          <li data-i="zn.c6">«Как поменять жизнь после 40?»</li>
-          <li data-i="zn.c7">«Как простить?»</li>
-        </ul>
-        <p class="zn-line rv"><em data-i="zn.l1">Здесь вас услышат.</em> <span data-i="zn.l2">Без давления, оценок и готовых рецептов - в своём темпе и в кругу женщин, которым это знакомо.</span></p>
-      </div>
+      <ul class="chips rv" aria-label="С чем приходят" data-i-aria="aria.zn">
+        <li data-i="zn.c1">«Я потеряла себя»</li>
+        <li data-i="zn.c2">«Живу в тревоге»</li>
+        <li data-i="zn.c3">«Устала быть сильной»</li>
+        <li data-i="zn.c4">«Меня никто не ценит»</li>
+        <li data-i="zn.c5">«Как полюбить себя?»</li>
+        <li data-i="zn.c6">«Как поменять жизнь после 40?»</li>
+        <li data-i="zn.c7">«Как простить?»</li>
+        <li data-i="zn.c8">«Тело не радует»</li>
+        <li data-i="zn.c9">«Деньги уходят сквозь пальцы»</li>
+        <li data-i="zn.c10">«Повторяю мамину судьбу»</li>
+      </ul>
+    </div>
+    <div class="zn-end rv">
+      <p class="zn-say" data-i="zn.l1">Здесь вас услышат.</p>
+      <p class="zn-line" data-i="zn.l2">Без давления, оценок и готовых рецептов. В своём темпе и в пространстве, где меняется состояние.</p>
+      <a class="btn btn-gold btn-seal" href="https://wa.me/77074858494" data-wa="znakomo" target="_blank" rel="noopener"><span data-i="zn.b">Хочу в круг</span><i class="seal" aria-hidden="true"><svg width="18" height="18"><use href="#ic-wa"/></svg></i></a>
+      <p class="zn-note" data-i="zn.n">тихо · бережно · без спама</p>
+    </div>
+  </div>
+</section>
+
+<!-- Пять программ (по макету клиентки: «двери» -> «программы») -->
+<section class="sec sec-tint sec-pg" id="pyat-programm" aria-labelledby="h-pg">
+  <div class="wrap">
+    <p class="kicker" data-i="pg.k">Пять программ</p>
+    <h2 id="h-pg"><span data-i="pg.h">Мы возвращаемся к себе</span> <em data-i="pg.h2">через пять программ</em></h2>
+    <p class="pg-sub" data-i="pg.sub">У каждой из нас свои установки и программы. Начните с той, что откликается, или пройдите все.</p>
+    <ul class="pg-grid">
+      <li class="pg-card rv">
+        <div class="pg-top"><span class="pg-ico" aria-hidden="true"><svg width="22" height="22"><use href="#ic-body"/></svg></span><h3 data-i="pg1.t">Тело</h3></div>
+        <p class="pg-pain" data-i="pg1.p">Когда устала быть сильной.</p>
+        <p class="pg-ret" data-i="pg1.r">Возвращаем мягкость и право чувствовать.</p>
+        <p class="pg-lbl" data-i="pg.lbl">так звучит</p>
+        <ul class="pg-chips"><li data-i="pg1.c1">«Устала быть сильной»</li><li data-i="pg1.c2">«Тело не радует»</li></ul>
+      </li>
+      <li class="pg-card rv">
+        <div class="pg-top"><span class="pg-ico" aria-hidden="true"><svg width="22" height="22"><use href="#ic-mind"/></svg></span><h3 data-i="pg2.t">Мысли</h3></div>
+        <p class="pg-pain" data-i="pg2.p">Когда живу в тревоге.</p>
+        <p class="pg-ret" data-i="pg2.r">Возвращаем тишину в голове.</p>
+        <p class="pg-lbl" data-i="pg.lbl">так звучит</p>
+        <ul class="pg-chips"><li data-i="pg2.c1">«Живу в тревоге»</li><li data-i="pg2.c2">«Я потеряла себя»</li></ul>
+      </li>
+      <li class="pg-card rv">
+        <div class="pg-top"><span class="pg-ico" aria-hidden="true"><svg width="22" height="22"><use href="#ic-rod"/></svg></span><h3 data-i="pg3.t">Род</h3></div>
+        <p class="pg-pain" data-i="pg3.p">Когда повторяю мамину судьбу.</p>
+        <p class="pg-ret" data-i="pg3.r">Возвращаем свою силу и свой путь.</p>
+        <p class="pg-lbl" data-i="pg.lbl">так звучит</p>
+        <ul class="pg-chips"><li data-i="pg3.c1">«Повторяю мамину судьбу»</li><li data-i="pg3.c2">«Как простить?»</li></ul>
+      </li>
+      <li class="pg-card rv">
+        <div class="pg-top"><span class="pg-ico" aria-hidden="true"><svg width="22" height="22"><use href="#ic-money"/></svg></span><h3 data-i="pg4.t">Деньги</h3></div>
+        <p class="pg-pain" data-i="pg4.p">Когда деньги уходят сквозь пальцы.</p>
+        <p class="pg-ret" data-i="pg4.r">Возвращаем право иметь и брать.</p>
+        <p class="pg-lbl" data-i="pg.lbl">так звучит</p>
+        <ul class="pg-chips"><li data-i="pg4.c1">«Деньги уходят сквозь пальцы»</li></ul>
+      </li>
+      <li class="pg-card rv">
+        <div class="pg-top"><span class="pg-ico" aria-hidden="true"><svg width="22" height="22"><use href="#ic-heart"/></svg></span><h3 data-i="pg5.t">Отношения</h3></div>
+        <p class="pg-pain" data-i="pg5.p">Когда меня никто не ценит.</p>
+        <p class="pg-ret" data-i="pg5.r">Возвращаем себя в центр.</p>
+        <p class="pg-lbl" data-i="pg.lbl">так звучит</p>
+        <ul class="pg-chips"><li data-i="pg5.c1">«Меня никто не ценит»</li><li data-i="pg5.c2">«Как полюбить себя?»</li></ul>
+      </li>
+    </ul>
+    <div class="pg-end rv">
+      <p class="pg-say"><span data-i="pg.e1">Не нужно чинить всё сразу.</span> <em data-i="pg.e2">Достаточно начать с одной программы.</em></p>
+      <a class="btn btn-gold btn-seal" href="https://wa.me/77074858494" data-wa="pyat-programm" target="_blank" rel="noopener"><span data-i="pg.b">Хочу в круг</span><i class="seal" aria-hidden="true"><svg width="18" height="18"><use href="#ic-wa"/></svg></i></a>
+      <p class="zn-note" data-i="pg.n">Мягкий круг без оценок. Только вы и те, кто тоже возвращается к себе.</p>
     </div>
   </div>
 </section>
@@ -207,6 +268,32 @@
     </div>
   </section>
 </div>
+
+<!-- Как проходят встречи (по макету клиентки) -->
+<section class="sec sec-light sec-vs" id="vstrechi" aria-labelledby="h-vs">
+  <div class="wrap">
+    <p class="kicker" data-i="vs.k">Как проходят встречи онлайн</p>
+    <h2 id="h-vs"><span data-i="vs.h">90 минут, которые</span> <em data-i="vs.h2">возвращают к себе</em></h2>
+    <p class="pg-sub" data-i="vs.sub">Не просто разговоры. Каждая встреча - маленькая сессия с инструментами, которые остаются с вами.</p>
+    <ol class="vs-list">
+      <li class="vs-step rv"><i>01</i><div><h3 data-i="vs.t1">Диагностика состояния</h3><p data-i="vs.d1">Тест на пять программ: где сейчас проседает - тело, мысли, род, деньги или отношения.</p><p class="vs-get"><span data-i="vs.get">Получаете:</span> <span data-i="vs.g1">карту своего состояния</span></p></div></li>
+      <li class="vs-step rv"><i>02</i><div><h3 data-i="vs.t2">Телесная практика и медитация</h3><p data-i="vs.d2">15 минут мягкой практики: возвращаем тело из напряжения в чувство. Можно сидя на стуле.</p><p class="vs-get"><span data-i="vs.get">Получаете:</span> <span data-i="vs.g2">запись практики, чтобы повторять дома</span></p></div></li>
+      <li class="vs-step rv"><i>03</i><div><h3 data-i="vs.t3">Разбор и сессия</h3><p data-i="vs.d3">Тема встречи и 2-3 вопроса для саморефлексии. Делитесь или просто слушаете - без советов и оценок.</p><p class="vs-get"><span data-i="vs.get">Получаете:</span> <span data-i="vs.g3">инсайты, которые не приходят в одиночку</span></p></div></li>
+      <li class="vs-step rv"><i>04</i><div><h3 data-i="vs.t4">Практика недели и тест</h3><p data-i="vs.d4">После круга - в чат: практика на 10 минут в день и чек-лист.</p><p class="vs-get"><span data-i="vs.get">Получаете:</span> <span data-i="vs.g4">инструмент, а не просто эмоции</span></p></div></li>
+      <li class="vs-step rv"><i>05</i><div><h3 data-i="vs.t5">Закрытый чат и киноклуб</h3><p data-i="vs.d5">Между встречами - небольшой чат, где можно спросить и быть услышанной. Раз в месяц - киноклуб.</p><p class="vs-get"><span data-i="vs.get">Получаете:</span> <span data-i="vs.g5">поддержку, а не одиночество</span></p></div></li>
+    </ol>
+    <ul class="vs-tags rv">
+      <li data-i="vs.tag1">90 минут · онлайн · запись остаётся</li>
+      <li data-i="vs.tag2">тесты · практики · медитации · сессии</li>
+      <li data-i="vs.tag3">чат поддержки · киноклуб</li>
+    </ul>
+    <div class="pg-end rv">
+      <p class="pg-say"><span data-i="vs.e1">Не поболтаем и разойдёмся.</span> <em data-i="vs.e2">Дадим инструмент, который меняет состояние уже сегодня.</em></p>
+      <a class="btn btn-gold btn-seal" href="https://wa.me/77074858494" data-wa="vstrechi" target="_blank" rel="noopener"><span data-i="vs.b">Хочу в круг</span><i class="seal" aria-hidden="true"><svg width="18" height="18"><use href="#ic-wa"/></svg></i></a>
+      <p class="zn-note" data-i="vs.n">Сначала посмотрите темы и формат - решите сердцем.</p>
+    </div>
+  </div>
+</section>
 
 <!-- Плита: консультация -->
 <div class="pw" id="konsultaciya">
@@ -253,7 +340,7 @@
         </ul>
         <div class="svc-cta">
           <a class="btn btn-gold" href="https://wa.me/77074858494" data-wa="praktiki" target="_blank" rel="noopener"><svg width="18" height="18" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i="p.b">Выбрать практику</span></a>
-          <a class="lnk" href="#programmy"><span data-i="p.b2">Программы</span><svg width="16" height="16" aria-hidden="true"><use href="#ic-arr"/></svg></a>
+          <a class="lnk" href="#programmy"><span data-i="p.b2">Форматы</span><svg width="16" height="16" aria-hidden="true"><use href="#ic-arr"/></svg></a>
         </div>
       </div>
       <div class="svc-ph">
@@ -269,7 +356,7 @@
 <!-- Программы -->
 <section class="sec sec-tint" id="programmy" aria-labelledby="h-pr">
   <div class="wrap">
-    <p class="kicker" data-i="pr.k">Программы</p>
+    <p class="kicker" data-i="pr.k">Форматы</p>
     <h2 id="h-pr" data-i="pr.h">Форматы, в которых можно идти дальше</h2>
     <div class="bento">
       <a class="tile tile-a rv" href="https://wa.me/77074858494" data-wa="programmy" target="_blank" rel="noopener">
@@ -306,9 +393,8 @@
   <div class="wrap">
     <div class="au-grid">
       <div class="au-ph">
-        <div class="ph ph-a" data-bl="bl-a">
+        <div class="ph ph-a">
           <img src="assets/img/zhannat.webp" alt="Жаннат Жансеитова" loading="lazy" decoding="async" width="840" height="1120">
-          <svg class="bl-line" aria-hidden="true"><g class="blg"></g></svg>
         </div>
       </div>
       <div class="au-txt">
@@ -337,7 +423,7 @@
 <!-- Как проходит -->
 <section class="sec sec-light" id="kak-prohodit" aria-labelledby="h-s">
   <div class="wrap">
-    <p class="kicker" data-i="s.k">Как проходит</p>
+    <p class="kicker" data-i="s.k">Как начать</p>
     <h2 id="h-s" data-i="s.h">Четыре шага до первой встречи</h2>
     <ol class="steps rv">
       <li><i>01</i><h3 data-i="s.t1">Пишете в WhatsApp</h3><p data-i="s.d1">Пара слов о том, что волнует. Можно без подробностей.</p></li>
@@ -468,6 +554,6 @@
   <a href="https://wa.me/77074858494" data-wa="sticky" target="_blank" rel="noopener" class="sk-wa"><svg width="18" height="18" aria-hidden="true"><use href="#ic-wa"/></svg><span>WhatsApp</span></a>
 </nav>
 
-<script src="script.js?v=20261021-4" defer></script>
+<script src="script.js?v=20261021-5" defer></script>
 </body>
 </html>
