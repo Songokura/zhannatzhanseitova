@@ -26,6 +26,9 @@ window.SITE_EN = {
   "pg4.t": "Money", "pg4.p": "When money slips through my fingers.", "pg4.r": "We bring back the right to have and to receive.", "pg4.c1": "“Money slips through my fingers”",
   "pg5.t": "Relationships", "pg5.p": "When nobody appreciates me.", "pg5.r": "We put you back in the centre.", "pg5.c1": "“Nobody appreciates me”", "pg5.c2": "“How do I love myself?”",
   "pg.e1": "No need to fix everything at once.", "pg.e2": "Starting with one program is enough.", "pg.b": "Join the circle", "pg.n": "A gentle circle without judgement. Just you and others returning to themselves.",
+  "pg.t": "Not sure where to start? Take the test",
+  "qz.k": "A 2-minute test", "qz.h": "Where is your energy", "qz.h2": "leaking right now?",
+  "qz.sub": "Body, thoughts, family roots, money, relationships - find out where to begin returning to yourself. Quietly, with no diagnoses and no advice.",
   "vs.k": "How the online meetings go", "vs.h": "90 minutes that", "vs.h2": "bring you back to yourself",
   "vs.sub": "Not just talking. Every meeting is a small session with tools that stay with you.",
   "vs.get": "You get:",
@@ -120,3 +123,32 @@ window.SITE_EN_WA = (function () {
   };
 })();
 window.SITE_EN_FORM = { head: "Request from the website. I would like to start with:", name: "Name", phone: "Phone", msg: "What worries me", opt: { k: "Session", c: "Women's circle", p: "Practices and meditations" } };
+
+window.SITE_EN_QZ = {
+  ui: {
+    how: [["One question, one screen", "Only what resonates right now"], ["7 honest answers", "There are no right options, choose with your heart"], ["Your program map", "What it is, why, and where to begin"]],
+    start: "Start the test", note: "2 minutes · only you see your answers", num: "Question {n} of {m}", back: "Back",
+    hint: "Choose honestly, not correctly",
+    lbl: "Your program right now", feel: "How it feels", begin: "Where to gently begin",
+    k: { h: "Go through your map one on one", p: "A 60-90 minute session: we see what holds you and where you in particular should begin. No “pull yourself together” advice.", m: "From 10 000 ₸ · online or in person in Almaty", b: "Book a session", alt: "Or start gently in the circle" },
+    c: { h: "Start gently in the circle", p: "A theme for your request: “{c}”. 90 minutes online, a practice and a chat after the meeting.", pt: "In the circle I will give you a tool: {p}. You can do it at home on your own.", b: "Join the circle", alt: "Or go through your map one on one" },
+    sent: "Your answers go in the message - Zhannat will read them and reply personally.", again: "Take the test again"
+  },
+  wa: { hi: "Hello, Zhannat! I took the test on the website. My program is {p}.", k: "I would like a session.", c: "I would like to join the circle. Theme: “{c}”.", ans: "My answers:" },
+  q: [
+    { t: "What do you hear in your head most often in the morning?", s: "In the morning", o: [["I have to be strong again", "T"], ["Anxious, too many thoughts", "M"], ["I am just like my mother", "R"], ["There is never enough money", "D"], ["Nobody values me", "O"]] },
+    { t: "Where do you feel tension in your body?", h: "Pick what resonates right now", s: "Tension in the body", o: [["Shoulders, neck - I carry everything", "T"], ["Head, insomnia, fog", "M"], ["Belly, chest - tight inside", "R"], ["Clenched jaw, tension", "D"], ["A lump in my throat, I want to cry", "O"]] },
+    { t: "Which phrase is about you right now?", s: "About me", o: [["I have lost myself", "M"], ["I am tired of being strong", "T"], ["I repeat my mother's fate", "R"], ["Money slips through my fingers", "D"], ["How do I love myself?", "O"]] },
+    { t: "What would you like most of all?", s: "I would like", o: [["To breathe out and feel my body", "T"], ["Quiet in my head", "M"], ["To let go of resentment", "R"], ["To allow myself to have", "D"], ["To be at the centre of my own life", "O"]] },
+    { t: "What is holding you back?", s: "Holding me back", o: [["No energy", "T"], ["Fears and anxiety", "M"], ["Guilt and duty", "R"], ["Ashamed to take money", "D"], ["Afraid of being alone", "O"]] },
+    { t: "How old is your soul right now?", h: "A playful but very honest question", s: "Soul age", o: [["20 - I want to run away and start over", ""], ["35 - looking for who I really am", ""], ["45 - I want quiet and truth", ""], ["60+ - tired, I want to be held", ""]] },
+    { t: "What do you want to get right now?", h: "Choose what pulls you more", s: "I want", o: [["Simply to talk it out and be heard", "k"], ["To be in a quiet, safe circle of women", "c"], ["A tool I can use at home on my own", "t"]] }
+  ],
+  p: {
+    T: { n: "Body", d: "You have been strong for a long time. Your body is tired of holding everything.", b: "It is not laziness and not age. It is a signal: time to give yourself back softness and the right to feel. When you are tense all the time, the body becomes a safe for other people's expectations. It asks for a breath out.", f: "Shoulders, insomnia, a feeling of “I am a stone”, no energy even for joy.", r: "Start with the body - the thoughts will calm down by themselves. Gentle grounding, 4-7-8 breathing, warm hands on the belly.", c: "Back into the body. Softness instead of strength", t: "the “5 minutes of breathing out” practice and a grounding audio" },
+    M: { n: "Thoughts", d: "Your head is noisy. You have lost yourself in other people's expectations.", b: "You are used to analysing and controlling everything. But inner quiet does not come from one more piece of advice - it needs space. Right now your energy drains into an endless inner dialogue.", f: "Anxious loops, I cannot fall asleep, I keep replaying conversations.", r: "You need to unload, not motivation. A journal of quiet and the “empty cup” practice.", c: "Quiet in the head. How to stop winding yourself up", t: "the morning pages ritual and a stop-thoughts card" },
+    R: { n: "Family roots", d: "You carry someone else's fate. Your mother's scripts are holding you.", b: "Guilt, duty, being unable to forgive - this is not your character, it is a family program. It is as if you live not your own life but repeat what you saw as a child.", f: "I repeat my mother's fate, I cannot let go of resentment, I feel guilty when I choose myself.", r: "You need a gentle parting with someone else's script. A letter to your mother, a ritual of gratitude and letting go.", c: "Family roots. How to leave your mother's script without guilt", t: "the “My mother and I are two different women” practice" },
+    D: { n: "Money", d: "You know how to give, but you have forgotten how to take.", b: "Money leaves because inside there is a ban on “having”. Ashamed to ask, ashamed to take a lot, afraid to seem greedy. You are strong, but money loves permission, not strength.", f: "I work a lot - little money. Ashamed to name my price. I give away my last.", r: "Permission to have. The “I may” practice and rewriting the phrase “I am not allowed”.", c: "Money and permission. Why I am allowed to have more", t: "a checklist of money bans and the “open palms” practice" },
+    O: { n: "Relationships", d: "You put everyone at the centre except yourself.", b: "You are not valued because you yourself left the centre of your life. Love does not have to be proven - you deserve it. Time to bring yourself back, and the people around you will adjust.", f: "Hurt, lonely in my family, I want warmth but I am afraid to ask.", r: "Boundaries without shouting. The “I am at the centre” practice and speaking from your adult self.", c: "At the centre of my own life. Relationships without losing yourself", t: "the “three centres” practice and a phrase for boundaries" }
+  }
+};

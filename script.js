@@ -1,4 +1,4 @@
-/* Жаннат Жансеитова - Пространство радости. Ванильный JS: плиты, раскрытие пиона, меню, якоря, языки, форма. */
+/* Жаннат Жансеитова - Пространство радости. Ванильный JS: плиты, раскрытие пиона, меню, якоря, языки, тест, форма. */
 (function () {
   "use strict";
   var doc = document, root = doc.documentElement, W = window;
@@ -39,6 +39,7 @@
     var key = a.getAttribute("data-wa") || "default";
     var d = WA[LANG] || WA.ru;
     var text = d[key] || WA.ru[key] || WA.ru["default"];
+    if (key.indexOf("test-") === 0 && quiz) text = quiz.wa(key.slice(5));
     if (key === "programmy") {
       var h = a.querySelector("h3");
       text += "\n" + (h ? h.textContent.trim() : "");
@@ -310,6 +311,7 @@
     });
     try { localStorage.setItem("zh-lang", lang); } catch (e) {}
     fitText();
+    if (quiz) quiz.render();
   }
   function loadLang(lang, done) {
     if (I18N[lang] || (lang !== "kk" && lang !== "en")) return done();
@@ -321,6 +323,7 @@
         I18N[lang] = W["SITE_" + key];
         if (W["SITE_" + key + "_WA"]) WA[lang] = W["SITE_" + key + "_WA"];
         if (W["SITE_" + key + "_FORM"]) FORM_L[lang] = W["SITE_" + key + "_FORM"];
+        if (W["SITE_" + key + "_QZ"]) QZ[lang] = W["SITE_" + key + "_QZ"];
       }
       done();
     };
@@ -347,6 +350,118 @@
     rv.forEach(function (el) { io.observe(el); });
     setTimeout(function () { rv.forEach(function (el) { if (!el.classList.contains("in") && el.getBoundingClientRect().top < W.innerHeight) el.classList.add("in"); }); }, 1500);
   } else rv.forEach(function (el) { el.classList.add("in"); });
+
+  /* ---------- Тест «Где теряется энергия» (по макету клиентки): ответы уходят Жаннат в WhatsApp ---------- */
+  /* Код ответа: заглавная буква - программа (T тело, M мысли, R род, D деньги, O отношения), строчная - запрос (k консультация, c круг, t инструмент) */
+  var QZ = { ru: {
+    ui: {
+      how: [["Один вопрос - один экран", "Только то, что откликается сейчас"], ["7 честных ответов", "Правильных вариантов нет, выбирайте сердцем"], ["Ваша карта программы", "Что это, почему так и с чего начать"]],
+      start: "Начать тест", note: "2 минуты · ответы видите только вы", num: "Вопрос {n} из {m}", back: "Назад",
+      hint: "Выбирайте не правильно, а честно",
+      lbl: "Ваша программа сейчас", feel: "Как это чувствуется", begin: "С чего начать бережно",
+      k: { h: "Разобрать вашу карту один на один", p: "Консультация 60-90 минут: увидим, что держит, и с чего начать именно вам. Без советов «соберись».", m: "От 10 000 ₸ · онлайн или лично в Алматы", b: "Записаться на консультацию", alt: "Или начать мягко в кругу" },
+      c: { h: "Начать мягко в кругу", p: "Тема под ваш запрос: «{c}». 90 минут онлайн, практика и чат после встречи.", pt: "На круге дам инструмент: {p}. Сможете делать дома сама.", b: "Хочу в круг", alt: "Или разобрать карту один на один" },
+      sent: "Ваши ответы уйдут в сообщении - Жаннат прочитает их и ответит лично.", again: "Пройти тест заново"
+    },
+    wa: { hi: "Здравствуйте, Жаннат! Прошла тест на сайте. Моя программа - {p}.", k: "Хочу на консультацию.", c: "Хочу в круг. Тема: «{c}».", ans: "Мои ответы:" },
+    q: [
+      { t: "Что чаще всего звучит в голове утром?", s: "Утром в голове", o: [["Опять надо быть сильной", "T"], ["Тревожно, много мыслей", "M"], ["Я как мама", "R"], ["Денег вечно не хватает", "D"], ["Меня не ценят", "O"]] },
+      { t: "Где вы чувствуете напряжение в теле?", h: "Отмечайте то, что откликается сейчас", s: "Напряжение в теле", o: [["Плечи, шея - несу всё на себе", "T"], ["Голова, бессонница, туман", "M"], ["Живот, грудь - сжимается внутри", "R"], ["Сжатые челюсти, напряжение", "D"], ["Ком в горле, хочется плакать", "O"]] },
+      { t: "Какая фраза про вас сейчас?", s: "Фраза про меня", o: [["Я потеряла себя", "M"], ["Устала быть сильной", "T"], ["Повторяю мамину судьбу", "R"], ["Деньги уходят сквозь пальцы", "D"], ["Как полюбить себя?", "O"]] },
+      { t: "Чего бы вам хотелось больше всего?", s: "Хочется", o: [["Выдохнуть и почувствовать тело", "T"], ["Тишины в голове", "M"], ["Отпустить обиды", "R"], ["Разрешить себе иметь", "D"], ["Быть в центре своей жизни", "O"]] },
+      { t: "Что вас останавливает?", s: "Останавливает", o: [["Нет сил", "T"], ["Страхи и тревога", "M"], ["Чувство вины и долга", "R"], ["Стыдно брать деньги", "D"], ["Боюсь остаться одна", "O"]] },
+      { t: "Сколько вам сейчас лет душой?", h: "Шуточный, но очень честный вопрос", s: "Лет душой", o: [["20 - хочется сбежать и начать заново", ""], ["35 - ищу, кто я на самом деле", ""], ["45 - хочу тишины и правды", ""], ["60+ - устала, хочу на ручки", ""]] },
+      { t: "Что вы хотите получить сейчас?", h: "Выберите то, к чему тянет сильнее", s: "Хочу получить", o: [["Просто выговориться и быть услышанной", "k"], ["Быть в кругу женщин, где тихо и безопасно", "c"], ["Инструмент, который могу делать дома сама", "t"]] }
+    ],
+    p: {
+      T: { n: "Тело", d: "Вы долго были сильной. Тело устало держать всё.", b: "Это не лень и не возраст. Это сигнал: пора вернуть себе мягкость и право чувствовать. Когда вы всё время напряжены, тело становится сейфом для чужих ожиданий. Оно просит выдоха.", f: "Плечи, бессонница, ощущение «я как камень», нет сил даже на радость.", r: "Начните с тела - мысли успокоятся сами. Мягкое заземление, дыхание 4-7-8, тёплые руки на живот.", c: "Возвращение в тело. Мягкость вместо силы", t: "практику «5 минут выдоха» и аудио-заземление" },
+      M: { n: "Мысли", d: "В голове шумно. Вы потеряли себя в чужих ожиданиях.", b: "Вы привыкли всё анализировать и контролировать. Но тишина внутри не приходит от ещё одного совета - ей нужно место. Сейчас ваша энергия утекает в бесконечный внутренний диалог.", f: "Тревожные круги, не могу уснуть, постоянно прокручиваю разговоры.", r: "Нужна выгрузка, а не мотивация. Дневник тишины и практика «пустая чашка».", c: "Тишина в голове. Как перестать себя накручивать", t: "ритуал утренних страниц и карточку стоп-мыслей" },
+      R: { n: "Род", d: "Вы несёте чужую судьбу. Мамины сценарии держат вас.", b: "Чувство вины, долга, невозможность простить - это не ваш характер, это родовая программа. Будто живёте не свою жизнь, а повторяете то, что видели в детстве.", f: "Повторяю судьбу мамы, не могу отпустить обиду, чувствую вину, если выбираю себя.", r: "Нужен мягкий развод с чужим сценарием. Письмо маме, ритуал благодарности и отпускания.", c: "Род. Как выйти из маминого сценария без вины", t: "практику «Я и моя мама - две разные женщины»" },
+      D: { n: "Деньги", d: "Вы умеете отдавать, но разучились брать.", b: "Деньги уходят, потому что внутри запрет на «иметь». Стыдно просить, стыдно брать много, страшно быть корыстной. Вы сильная, но деньги любят не силу, а разрешение.", f: "Работаю много - денег мало. Стыдно назвать цену. Отдаю последнее.", r: "Разрешение иметь. Практика «можно» и перепрошивка фразы «мне нельзя».", c: "Деньги и разрешение. Почему мне можно иметь больше", t: "чек-лист денежных запретов и практику «открытые ладони»" },
+      O: { n: "Отношения", d: "Вы ставите в центр всех, кроме себя.", b: "Вас не ценят, потому что вы сами ушли из центра своей жизни. Любовь не нужно доказывать - вы её заслуживаете. Пора вернуть себя, и люди вокруг перестроятся.", f: "Обидно, одиноко в семье, хочу тепла, но боюсь просить.", r: "Границы без крика. Практика «я в центре» и разговор из взрослой части.", c: "Я в центре своей жизни. Отношения без потери себя", t: "практику «три центра» и фразу для границ" }
+    }
+  } };
+  var QZ_ICO = { T: "ic-body", M: "ic-mind", R: "ic-rod", D: "ic-money", O: "ic-heart" };
+  var quiz = (function () {
+    var box = doc.getElementById("qz");
+    if (!box) return null;
+    var step = -1, ans = [], busy = false;
+    function Q() { return QZ[LANG] || QZ.ru; }
+    function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+    function code(i) { return QZ.ru.q[i].o[ans[i]][1]; }
+    /* программа: больше всего совпадений, при равенстве - та, что выбрана последней */
+    function prog() {
+      var cnt = {}, order = [], max = 0;
+      ans.forEach(function (a, i) { var c = code(i); if (/^[A-Z]$/.test(c)) { cnt[c] = (cnt[c] || 0) + 1; order.push(c); if (cnt[c] > max) max = cnt[c]; } });
+      for (var j = order.length - 1; j >= 0; j--) if (cnt[order[j]] === max) return order[j];
+      return "T";
+    }
+    function intent() { for (var i = ans.length - 1; i >= 0; i--) { var c = code(i); if (/^[a-z]$/.test(c)) return c; } return "k"; }
+    function waBtn(kind, label) {
+      return '<a class="btn btn-gold" href="https://wa.me/' + WA_NUM + '" data-wa="test-' + kind + '" target="_blank" rel="noopener"><svg width="18" height="18" aria-hidden="true"><use href="#ic-wa"/></svg><span>' + esc(label) + "</span></a>";
+    }
+    function waLnk(kind, label) {
+      return '<a class="lnk" href="https://wa.me/' + WA_NUM + '" data-wa="test-' + kind + '" target="_blank" rel="noopener"><span>' + esc(label) + '</span><svg width="16" height="16" aria-hidden="true"><use href="#ic-arr"/></svg></a>';
+    }
+    function render(focus) {
+      var d = Q(), u = d.ui, h = "";
+      if (step < 0) {
+        h = '<ul class="qz-how">' + u.how.map(function (x) { return "<li><b>" + esc(x[0]) + "</b><span>" + esc(x[1]) + "</span></li>"; }).join("") + "</ul>";
+        h += '<ul class="qz-chips">' + ["T", "M", "R", "D", "O"].map(function (k) { return '<li><svg width="18" height="18" aria-hidden="true"><use href="#' + QZ_ICO[k] + '"/></svg>' + esc(d.p[k].n) + "</li>"; }).join("") + "</ul>";
+        h += '<div class="qz-go"><button class="btn btn-gold" type="button" data-qz="start">' + esc(u.start) + '<svg width="18" height="18" aria-hidden="true"><use href="#ic-arr"/></svg></button><p class="qz-note">' + esc(u.note) + "</p></div>";
+      } else if (step < d.q.length) {
+        var q = d.q[step];
+        h = '<div class="qz-top"><p class="qz-num">' + esc(u.num.replace("{n}", step + 1).replace("{m}", d.q.length)) + '</p><button class="qz-back" type="button" data-qz="back"' + (step ? "" : " hidden") + '><svg width="16" height="16" aria-hidden="true"><use href="#ic-arr"/></svg>' + esc(u.back) + "</button></div>";
+        h += '<div class="qz-bar" aria-hidden="true"><i style="transform:scaleX(' + ((step + 1) / d.q.length).toFixed(3) + ')"></i></div>';
+        h += '<h3 class="qz-q" tabindex="-1">' + esc(q.t) + '</h3><p class="qz-h">' + esc(q.h || u.hint) + "</p>";
+        h += '<div class="qz-opts">' + q.o.map(function (o, i) { var on = ans[step] === i; return '<button class="qz-o' + (on ? " is-on" : "") + '" type="button" data-qz="o" data-n="' + i + '" aria-pressed="' + on + '">' + esc(o[0]) + "</button>"; }).join("") + "</div>";
+      } else {
+        var k = prog(), p = d.p[k], it = intent(), consult = it === "k";
+        h = '<p class="qz-lbl">' + esc(u.lbl) + '</p><h3 class="qz-pn" tabindex="-1">' + esc(p.n) + '</h3><p class="qz-d">' + esc(p.d) + '</p><p class="qz-b">' + esc(p.b) + "</p>";
+        h += '<div class="qz-two"><div><b>' + esc(u.feel) + "</b><p>" + esc(p.f) + "</p></div><div><b>" + esc(u.begin) + "</b><p>" + esc(p.r) + "</p></div></div>";
+        if (consult) {
+          h += '<div class="qz-off"><h4>' + esc(u.k.h) + "</h4><p>" + esc(u.k.p) + '</p><p class="qz-meta">' + esc(u.k.m) + '</p><div class="qz-cta">' + waBtn("k", u.k.b) + waLnk("c", u.k.alt) + "</div></div>";
+        } else {
+          var txt = it === "t" ? u.c.pt.replace("{p}", p.t) : u.c.p.replace("{c}", p.c);
+          h += '<div class="qz-off"><h4>' + esc(u.c.h) + "</h4><p>" + esc(txt) + '</p><div class="qz-cta">' + waBtn("c", u.c.b) + waLnk("k", u.c.alt) + "</div></div>";
+        }
+        h += '<p class="qz-note" style="margin-top:14px">' + esc(u.sent) + '</p><button class="qz-again" type="button" data-qz="again">' + esc(u.again) + "</button>";
+      }
+      box.innerHTML = '<div class="qz-step">' + h + "</div>";
+      if (focus) {
+        var hd = box.querySelector("[tabindex='-1']");
+        /* карточку - под шапку, чтобы варианты не уходили под липкую панель */
+        var top = box.getBoundingClientRect().top, off = (doc.getElementById("hdr") || { offsetHeight: 72 }).offsetHeight + 16;
+        if (Math.abs(top - off) > 40) W.scrollTo({ top: W.pageYOffset + top - off, behavior: REDUCED ? "auto" : "smooth" });
+        if (hd) try { hd.focus({ preventScroll: true }); } catch (e) {}
+      }
+    }
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest ? e.target.closest("[data-qz]") : null;
+      if (!b || busy) return;
+      var a = b.getAttribute("data-qz");
+      if (a === "start") { step = 0; ans = []; render(true); }
+      else if (a === "back") { if (step > 0) { step--; render(true); } }
+      else if (a === "again") { step = -1; ans = []; render(true); }
+      else if (a === "o") {
+        ans[step] = +b.getAttribute("data-n");
+        ans.length = step + 1;
+        [].forEach.call(box.querySelectorAll(".qz-o"), function (x) { var on = x === b; x.classList.toggle("is-on", on); x.setAttribute("aria-pressed", on); });
+        busy = true;
+        setTimeout(function () { busy = false; step++; render(true); }, REDUCED ? 60 : 280);
+      }
+    });
+    render(false);
+    return {
+      render: function () { render(false); },
+      wa: function (kind) {
+        var d = Q(), p = d.p[prog()];
+        var lines = [d.wa.hi.replace("{p}", p.n) + " " + (kind === "k" ? d.wa.k : d.wa.c.replace("{c}", p.c)), "", d.wa.ans];
+        ans.forEach(function (a, i) { lines.push((i + 1) + ". " + d.q[i].s + ": " + d.q[i].o[a][0]); });
+        return lines.join("\n");
+      }
+    };
+  })();
 
   /* ---------- Форма -> WhatsApp ---------- */
   var form = doc.getElementById("form"), thanks = doc.getElementById("thanks"), ferr = doc.getElementById("ferr");
