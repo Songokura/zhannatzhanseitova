@@ -322,6 +322,17 @@ body.menu-open { overflow: hidden; }
 .tile-go svg { width: 16px; height: 16px; transition: transform .3s var(--ease); }
 @media (hover: hover) and (pointer: fine) { .tile:hover img { transform: scale(1.05); } .tile:hover .tile-go svg { transform: translateX(4px); } }
 .tile-b img { object-position: 50% 30%; }
+/* консультация и практики - крупные плитки над остальными форматами */
+.duo { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 40px; }
+.duo + .bento { margin-top: 16px; }
+.tile-duo { min-height: 500px; display: flex; flex-direction: column; justify-content: flex-end; }
+.tile-duo .tile-txt { position: relative; padding-top: 120px; }
+.tile-duo::after { background: linear-gradient(180deg, rgba(37, 54, 74, 0) 18%, rgba(37, 54, 74, .62) 50%, rgba(23, 33, 48, .94) 100%); }
+.tile-duo h3 { font-size: clamp(28px, 2.6vw, 36px); line-height: 1.1; }
+#praktiki img { object-position: 50% 35%; }
+.tile-facts { display: flex; flex-wrap: wrap; gap: 6px 8px; margin-top: 14px; }
+.tile-facts li { font-size: 13.5px; font-weight: 600; color: #fff; background: rgba(255, 255, 255, .16); border: 1px solid rgba(255, 255, 255, .28); border-radius: 999px; padding: 5px 12px; }
+.tile-duo .tile-go { margin-top: 18px; }
 
 /* Об авторе */
 .sec-author .bg-bloom.q { right: auto; left: -32vmin; }
@@ -461,6 +472,9 @@ body.menu-open .sticky { display: none; }
   .zn-grid, .au-grid, .st-grid, .otz-in, .kt-grid { grid-template-columns: minmax(0, 1fr); }
   .bento { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
   .tile-a { grid-row: auto; min-height: 320px; }
+  .duo { grid-template-columns: minmax(0, 1fr); }
+  .duo .tile-duo { min-height: 460px; }
+  .tile-duo .tile-txt { padding-top: 180px; }
   .tile { min-height: 260px; }
   .ph-a { max-width: 340px; max-height: none; aspect-ratio: 3 / 4; }
   .au-facts { gap: 12px; }

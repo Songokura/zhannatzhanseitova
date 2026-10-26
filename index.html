@@ -31,7 +31,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Mulish:wght@400;500;600;700&display=swap">
 <link rel="preload" as="image" href="assets/img/hero.webp">
-<link rel="stylesheet" href="styles.css?v=20261026-1">
+<link rel="stylesheet" href="styles.css?v=20261026-2">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -72,9 +72,7 @@
 <svg class="bl-defs" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
     <clipPath id="bl-hero" clipPathUnits="userSpaceOnUse"></clipPath>
-    <clipPath id="bl-1" clipPathUnits="userSpaceOnUse"></clipPath>
     <clipPath id="bl-2" clipPathUnits="userSpaceOnUse"></clipPath>
-    <clipPath id="bl-3" clipPathUnits="userSpaceOnUse"></clipPath>
   </defs>
 </svg>
 
@@ -307,69 +305,31 @@
   </div>
 </section>
 
-<!-- Плита: консультация -->
-<div class="pw" id="konsultaciya">
-  <section class="plate svc" aria-labelledby="h-k">
-    <svg class="bg-bloom q" viewBox="-120 -120 240 240" aria-hidden="true"><g class="bgb"></g></svg>
-    <div class="svc-in">
-      <div class="svc-txt txt">
-        <p class="kicker" data-i="k.k">Индивидуальная консультация</p>
-        <h2 id="h-k" data-i="k.h">Разобрать свою ситуацию один на один</h2>
-        <p class="svc-lead" data-i="k.l">Спокойный разговор о том, что сейчас держит на месте, и первый конкретный шаг. Лично в Алматы или онлайн.</p>
-        <ul class="facts">
-          <li data-i="k.f1">60-90 минут</li>
-          <li data-i="k.f2">От 10&nbsp;000&nbsp;₸</li>
-          <li data-i="k.f3">Онлайн-оплата</li>
-        </ul>
-        <div class="svc-cta">
-          <a class="btn btn-gold" href="https://wa.me/77074858494" data-wa="konsultaciya" target="_blank" rel="noopener"><svg width="18" height="18" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i="k.b">Записаться</span></a>
-          <a class="lnk" href="#kak-prohodit"><span data-i="k.b2">Как проходит</span><svg width="16" height="16" aria-hidden="true"><use href="#ic-arr"/></svg></a>
-        </div>
-      </div>
-      <div class="svc-ph">
-        <div class="ph ph-wide" data-bl="bl-1">
-          <img src="assets/img/konsultaciya.webp" alt="Две женщины разговаривают за столом у большого окна" data-i-alt="alt.k" loading="lazy" decoding="async" width="1200" height="800">
-          <svg class="bl-line" aria-hidden="true"><g class="blg"></g></svg>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- Плита: практики -->
-<div class="pw" id="praktiki">
-  <section class="plate svc plate-light" aria-labelledby="h-p">
-    <svg class="bg-bloom q" viewBox="-120 -120 240 240" aria-hidden="true"><g class="bgb"></g></svg>
-    <div class="svc-in rev">
-      <div class="svc-txt txt">
-        <p class="kicker" data-i="p.k">Практики и медитации</p>
-        <h2 id="h-p" data-i="p.h">Работа с мышлением и телом</h2>
-        <p class="svc-lead" data-i="p.l">Авторские практики: замечаем ограничивающие убеждения, выходим из привычных состояний, учимся слышать тело. В группе и один на один.</p>
-        <ul class="facts">
-          <li data-i="p.f1">Разбор убеждений</li>
-          <li data-i="p.f2">Медитации</li>
-          <li data-i="p.f3">Практика «Тело помнит всё»</li>
-        </ul>
-        <div class="svc-cta">
-          <a class="btn btn-gold" href="https://wa.me/77074858494" data-wa="praktiki" target="_blank" rel="noopener"><svg width="18" height="18" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i="p.b">Выбрать практику</span></a>
-          <a class="lnk" href="#programmy"><span data-i="p.b2">Форматы</span><svg width="16" height="16" aria-hidden="true"><use href="#ic-arr"/></svg></a>
-        </div>
-      </div>
-      <div class="svc-ph">
-        <div class="ph" data-bl="bl-3">
-          <img src="assets/img/praktiki.webp" alt="Женщина медитирует на деревянной террасе в лучах восходящего солнца" data-i-alt="alt.p" loading="lazy" decoding="async" width="1000" height="1163">
-          <svg class="bl-line" aria-hidden="true"><g class="blg"></g></svg>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
 <!-- Программы -->
 <section class="sec sec-tint" id="programmy" aria-labelledby="h-pr">
   <div class="wrap">
     <p class="kicker" data-i="pr.k">Форматы</p>
     <h2 id="h-pr" data-i="pr.h">Форматы, в которых можно идти дальше</h2>
+    <div class="duo">
+      <a class="tile tile-duo" id="konsultaciya" href="https://wa.me/77074858494" data-wa="konsultaciya" target="_blank" rel="noopener">
+        <img src="assets/img/konsultaciya.webp" alt="Две женщины разговаривают за столом у большого окна" data-i-alt="alt.k" loading="lazy" decoding="async" width="1200" height="800">
+        <div class="tile-txt">
+          <h3 data-i="k.k">Индивидуальная консультация</h3>
+          <p data-i="k.l">Спокойный разговор о том, что сейчас держит на месте, и первый конкретный шаг. Лично в Алматы или онлайн.</p>
+          <ul class="tile-facts"><li data-i="k.f1">60-90 минут</li><li data-i="k.f2">От 10&nbsp;000&nbsp;₸</li><li data-i="k.f3">Онлайн-оплата</li></ul>
+          <span class="tile-go"><svg width="16" height="16" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i="k.b">Записаться</span></span>
+        </div>
+      </a>
+      <a class="tile tile-duo" id="praktiki" href="https://wa.me/77074858494" data-wa="praktiki" target="_blank" rel="noopener">
+        <img src="assets/img/praktiki.webp" alt="Женщина медитирует на деревянной террасе в лучах восходящего солнца" data-i-alt="alt.p" loading="lazy" decoding="async" width="1000" height="1163">
+        <div class="tile-txt">
+          <h3 data-i="p.k">Практики и медитации</h3>
+          <p data-i="p.l">Авторские практики: замечаем ограничивающие убеждения, выходим из привычных состояний, учимся слышать тело. В группе и один на один.</p>
+          <ul class="tile-facts"><li data-i="p.f1">Разбор убеждений</li><li data-i="p.f2">Медитации</li><li data-i="p.f3">Практика «Тело помнит всё»</li></ul>
+          <span class="tile-go"><svg width="16" height="16" aria-hidden="true"><use href="#ic-wa"/></svg><span data-i="p.b">Выбрать практику</span></span>
+        </div>
+      </a>
+    </div>
     <div class="bento">
       <a class="tile tile-a rv" href="https://wa.me/77074858494" data-wa="programmy" target="_blank" rel="noopener">
         <img src="assets/img/online.webp" alt="Ноутбук, чашка кофе, свеча и блокнот на столе" data-i-alt="alt.t1" loading="lazy" decoding="async" width="900" height="600">
@@ -566,6 +526,6 @@
   <a href="https://wa.me/77074858494" data-wa="sticky" target="_blank" rel="noopener" class="sk-wa"><svg width="18" height="18" aria-hidden="true"><use href="#ic-wa"/></svg><span>WhatsApp</span></a>
 </nav>
 
-<script src="script.js?v=20261026-1" defer></script>
+<script src="script.js?v=20261026-2" defer></script>
 </body>
 </html>
