@@ -17,19 +17,19 @@
   /* ---------- WhatsApp: текст собирается в момент клика (фаза захвата на window, совместимо с LeadBot) ---------- */
   var HI = "Здравствуйте, Жаннат! Пишу с сайта. ";
   var WA = { ru: {
-    "default": HI + "Хочу узнать подробнее о консультации.",
+    "default": HI + "Хочу узнать подробнее.",
     hero: HI + "Хочу в круг «Пространство радости».",
     menu: HI + "Хочу узнать подробнее.",
-    konsultaciya: HI + "Хочу записаться на индивидуальную консультацию.",
-    klub: HI + "Хочу в круг. Расскажите о ближайшей встрече.",
+    "pr-krug": "Хочу в круг за 6000 тг",
+    "pr-razbor": "Хочу на разбор за 15000 тг",
+    "pr-film": "Хочу фильм Деньги за 11000 тг",
+    ceny: HI + "Не знаю, с чего начать. Меня волнует: ",
     znakomo: HI + "Хочу в круг «Пространство радости».",
     "pyat-programm": HI + "Хочу в круг. Подскажите, с какой программы начать.",
-    vstrechi: HI + "Хочу в круг. Покажите программу месяца.",
+    vstrechi: "Хочу в круг за 6000 тг",
     "ob-avtore": HI + "Хочу в круг «Пространство радости».",
-    otzyvy: HI + "Хочу почитать отзывы участниц круга.",
-    praktiki: HI + "Интересуют практики и медитации. Подскажите, с чего начать.",
-    programmy: HI + "Интересует программа:",
-    kontakty: HI + "Хочу узнать подробнее о консультации.",
+    otzyvy: HI + "Меня волнует: ",
+    kontakty: HI + "Хочу узнать подробнее.",
     sticky: HI + "Хочу узнать подробнее.",
     start: HI + "Хочу начать. Подскажите, с чего лучше."
   } };
@@ -40,10 +40,6 @@
     var d = WA[LANG] || WA.ru;
     var text = d[key] || WA.ru[key] || WA.ru["default"];
     if (key.indexOf("test-") === 0 && quiz) text = quiz.wa(key.slice(5));
-    if (key === "programmy") {
-      var h = a.querySelector("h3");
-      text += "\n" + (h ? h.textContent.trim() : "");
-    }
     a.setAttribute("href", "https://wa.me/" + WA_NUM + "?text=" + encodeURIComponent(text));
   }, true);
 
@@ -293,7 +289,7 @@
   altEls.forEach(function (el) { RU[el.getAttribute("data-i-alt")] = el.getAttribute("alt"); });
   RU["meta.title"] = doc.title;
   RU["meta.desc"] = metaDesc ? metaDesc.getAttribute("content") : "";
-  var FORM_L = { ru: { head: "Заявка с сайта. Хочу начать с:", name: "Имя", phone: "Телефон", msg: "Что волнует", opt: { k: "Консультация", c: "Женский круг", p: "Практики и медитации" } } };
+  var FORM_L = { ru: { head: "Заявка с сайта. Хочу начать с:", name: "Имя", phone: "Телефон", msg: "Что волнует", opt: { r: "Персональный разбор (15 000 тг)", c: "Женский круг (6 000 тг в месяц)", f: "Фильм «Деньги» (11 000 тг)" } } };
   function t(key) { var d = I18N[LANG] || RU; return d[key] != null ? d[key] : RU[key]; }
   function applyLang(lang) {
     if (!I18N[lang]) lang = "ru";
@@ -359,11 +355,11 @@
       start: "Начать тест", note: "2 минуты · ответы видите только вы", num: "Вопрос {n} из {m}", back: "Назад",
       hint: "Выбирайте не правильно, а честно",
       lbl: "Ваша программа сейчас", feel: "Как это чувствуется", begin: "С чего начать бережно",
-      k: { h: "Разобрать вашу карту один на один", p: "Консультация 60-90 минут: увидим, что держит, и с чего начать именно вам. Без советов «соберись».", m: "От 10 000 ₸ · онлайн или лично в Алматы", b: "Записаться на консультацию", alt: "Или начать мягко в кругу" },
+      k: { h: "Разобрать вашу карту один на один", p: "Персональный разбор: диагностика 5 программ, находим 1 ключевую установку, которая держит, и даю практику на 10 минут в день.", m: "15 000 ₸ · онлайн · план на руках", b: "Хочу на разбор - 15 000 ₸", alt: "Или начать мягко в кругу" },
       c: { h: "Начать мягко в кругу", p: "Тема под ваш запрос: «{c}». 90 минут онлайн, практика и чат после встречи.", pt: "На круге дам инструмент: {p}. Сможете делать дома сама.", b: "Хочу в круг", alt: "Или разобрать карту один на один" },
       sent: "Ваши ответы уйдут в сообщении - Жаннат прочитает их и ответит лично.", again: "Пройти тест заново"
     },
-    wa: { hi: "Здравствуйте, Жаннат! Прошла тест на сайте. Моя программа - {p}.", k: "Хочу на консультацию.", c: "Хочу в круг. Тема: «{c}».", ans: "Мои ответы:" },
+    wa: { hi: "Здравствуйте, Жаннат! Прошла тест на сайте. Моя программа - {p}.", k: "Хочу на персональный разбор за 15000 тг.", c: "Хочу в круг. Тема: «{c}».", ans: "Мои ответы:" },
     q: [
       { t: "Что чаще всего звучит в голове утром?", s: "Утром в голове", o: [["Опять надо быть сильной", "T"], ["Тревожно, много мыслей", "M"], ["Я как мама", "R"], ["Денег вечно не хватает", "D"], ["Меня не ценят", "O"]] },
       { t: "Где вы чувствуете напряжение в теле?", h: "Отмечайте то, что откликается сейчас", s: "Напряжение в теле", o: [["Плечи, шея - несу всё на себе", "T"], ["Голова, бессонница, туман", "M"], ["Живот, грудь - сжимается внутри", "R"], ["Сжатые челюсти, напряжение", "D"], ["Ком в горле, хочется плакать", "O"]] },
@@ -477,7 +473,7 @@
       if (badName || badPhone) { if (ferr) ferr.hidden = false; (badName ? f.name : f.phone).focus(); return; }
       if (ferr) ferr.hidden = true;
       var L = FORM_L[LANG] || FORM_L.ru;
-      var opt = (form.querySelector('input[name="start"]:checked') || {}).value || "c";
+      var opt = (form.querySelector('input[name="start"]:checked') || {}).value || "r";
       var lines = [L.head + " " + (L.opt[opt] || ""), L.name + ": " + name, L.phone + ": " + phone];
       if (f.message.value.trim()) lines.push(L.msg + ": " + f.message.value.trim());
       var url = "https://wa.me/" + WA_NUM + "?text=" + encodeURIComponent(lines.join("\n"));
@@ -486,6 +482,55 @@
       if (thanks) { thanks.hidden = false; try { thanks.focus({ preventScroll: true }); } catch (err) {} }
       form.reset();
     });
+  }
+
+  /* ---------- Ленты со стрелками: шаг в одну карточку, крайняя кнопка гаснет, обе прячутся, если всё влезло ---------- */
+  [].forEach.call(doc.querySelectorAll("[data-car]"), function (car) {
+    var tr = car.querySelector(".car-track"), prev = car.querySelector("[data-car-prev]"), next = car.querySelector("[data-car-next]"), nav = car.querySelector(".car-nav");
+    if (!tr) return;
+    function stepW() { var li = tr.firstElementChild; return li ? li.getBoundingClientRect().width + (parseFloat(getComputedStyle(tr).columnGap) || 16) : tr.clientWidth; }
+    function sync() {
+      var max = tr.scrollWidth - tr.clientWidth;
+      nav.hidden = max < 4;
+      prev.disabled = tr.scrollLeft < 4;
+      next.disabled = tr.scrollLeft > max - 4;
+    }
+    prev.addEventListener("click", function () { tr.scrollBy({ left: -stepW(), behavior: REDUCED ? "auto" : "smooth" }); });
+    next.addEventListener("click", function () { tr.scrollBy({ left: stepW(), behavior: REDUCED ? "auto" : "smooth" }); });
+    tr.addEventListener("scroll", sync, { passive: true });
+    W.addEventListener("resize", sync);
+    W.addEventListener("load", sync);
+    sync();
+  });
+
+  /* ---------- Видео-отзывы: ролик грузится только по клику ---------- */
+  [].forEach.call(doc.querySelectorAll(".otz-vid"), function (b) {
+    b.addEventListener("click", function () {
+      [].forEach.call(doc.querySelectorAll(".otz-vid video"), function (v) { v.pause(); });
+      var box = doc.createElement("div"), v = doc.createElement("video");
+      box.className = "otz-vid is-on";
+      v.src = b.getAttribute("data-video"); v.controls = true; v.playsInline = true; v.setAttribute("playsinline", "");
+      v.poster = b.querySelector("img").getAttribute("src");
+      v.setAttribute("aria-label", b.querySelector(".otz-vcap").textContent);
+      box.appendChild(v); b.parentNode.replaceChild(box, b);
+      try { v.focus({ preventScroll: true }); } catch (e) {}
+      var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+    });
+  });
+
+  /* ---------- Просмотр скринов и сертификата ---------- */
+  var zoom = doc.getElementById("zoom");
+  if (zoom && zoom.showModal) {
+    var zImg = zoom.querySelector("img");
+    doc.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest("a[data-zoom]");
+      if (!a) return;
+      e.preventDefault();
+      var im = a.querySelector("img");
+      zImg.src = a.getAttribute("href"); zImg.alt = im ? im.alt : "";
+      zoom.showModal();
+    });
+    zoom.addEventListener("click", function (e) { if (e.target !== zImg) zoom.close(); });
   }
 
   var year = doc.getElementById("year"); if (year) year.textContent = String(new Date().getFullYear());
