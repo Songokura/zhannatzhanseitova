@@ -290,3 +290,4 @@ Object.assign(window.SITE_EN, {
   "st.o1d": "15\u00a0000\u00a0₸ instead of 35\u00a0000 · a month in the circle as a gift",
   "kt.v3": "Online. Circle 6\u00a0000\u00a0₸ a month, session 15\u00a0000\u00a0₸ (instead of 35\u00a0000), film 11\u00a0000\u00a0₸"
 });
+Object.assign(window.SITE_EN, { "o.v4": "I cried and laughed - and got answers to all my questions" });
