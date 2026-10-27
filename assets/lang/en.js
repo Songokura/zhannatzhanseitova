@@ -281,3 +281,12 @@ Object.assign(window.SITE_EN, {
   k.m = "15\u00a0000\u00a0₸ · online · a plan in hand"; k.b = "Book a session - 15\u00a0000\u00a0₸";
   window.SITE_EN_QZ.wa.k = "I would like a personal session for 15000 tenge.";
 })();
+
+Object.assign(window.SITE_EN, {
+  "pr2.olda": "Regular price 35 000 ₸",
+  "pr2.note": "Special price now instead of 35\u00a0000\u00a0₸",
+  "pr.gift": "Gift:", "pr.giftt": "one month in the Women's circle for free",
+  "f.a3": "Women's circle - 6\u00a0000\u00a0₸ a month, personal session - 15\u00a0000\u00a0₸ instead of 35\u00a0000\u00a0₸, the Money film - 11\u00a0000\u00a0₸. The session and the film come with a free month in the circle. Online payment.",
+  "st.o1d": "15\u00a0000\u00a0₸ instead of 35\u00a0000 · a month in the circle as a gift",
+  "kt.v3": "Online. Circle 6\u00a0000\u00a0₸ a month, session 15\u00a0000\u00a0₸ (instead of 35\u00a0000), film 11\u00a0000\u00a0₸"
+});
